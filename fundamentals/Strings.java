@@ -1,4 +1,4 @@
-package fundamentals;
+package Fundamentals;
 import java.util.*;
 
 public class Strings {
@@ -7,7 +7,7 @@ public class Strings {
         // String name = "Messi";
         // String fullName = "Messi 10";
         // Scanner sc = new Scanner(System.in);
-        // String name = sc.nextLine();
+        // String n ame = sc.nextLine();
         // System.out.println("Your name is: " + name);
 
         //> Concatenation

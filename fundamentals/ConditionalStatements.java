@@ -1,5 +1,4 @@
-package fundamentals;
-
+package Fundamentals;
 import java.util.*;
 
 public class ConditionalStatements {
@@ -15,7 +14,5 @@ public class ConditionalStatements {
         else {
             System.out.println("numberTwo is grater");
         }
-
-        switch ()
     }
 }

@@ -1,4 +1,4 @@
-package fundamentals;
+package Fundamentals;
 import java.util.*;
 import java.math.*;
  

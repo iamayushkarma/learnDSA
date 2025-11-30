@@ -1,4 +1,4 @@
-package fundamentals;
+package Fundamentals;
 
 public class AdvancePatterns {
     public static void main(String[] args) {
