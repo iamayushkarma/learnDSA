@@ -23,18 +23,30 @@ public class Strings {
         // }
 
         //> Compare
-        String firstName = "Tony";
-        String lastName = "Tony";
+        // String firstName = "Tony";
+        // String lastName = "Tony";
 
         // s1 > s2: +ve value
         // s1 == s2: 0
         // s1 < s2: -ve value
 
-        if(firstName.compareTo(lastName) == 0){
-            System.out.println("Strings are equal");
-        }else{
-            System.out.println("Strings are not equal");
-        }
+        // if(firstName.compareTo(lastName) == 0){
+        //     System.out.println("Strings are equal");
+        // }else{
+        //     System.out.println("Strings are not equal");
+        // }
 
+        int a = 10;
+        int b = 0;
+        b = ++a;
+        System.out.println(a);
+        System.out.println(b);
+
+
+        int c = 10;
+        int d = 0;
+        d = c++;
+        System.out.println(c);
+        System.out.println(d);
     } // end of main function
 }
