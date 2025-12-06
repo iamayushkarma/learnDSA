@@ -1,16 +1,23 @@
-package Fundamentals;
+package Array;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class ArrayQuestions {
+    static Scanner sc = new Scanner(System.in);
 
     //> Helper function
-
     static void printArr(int arr[]){
         for(int i = 0; i < arr.length; i++){
             System.out.print(arr[i] +  " ");
         }
+    }
+    static int totalSum(int arr[]){
+        int total = 0;
+        for(int i = 0; i < arr.length; i++){
+            total += arr[i];
+        }
+        return total;
     }
     //> Q 1 Find the total number of pairs in the Array whose sun is equal to the give vlaue x
     public static void findSum(int arr[], int x) {
@@ -150,6 +157,56 @@ public class ArrayQuestions {
         return fqArr;
     }
 
+    //> Q 10 Prefix sum
+    static int[] prefixSum(int arr[]){
+        int n = arr.length;
+        // creating an new array
+        int[] prefixAns = new int[n];
+        prefixAns[0] = arr[0];
+
+        for(int i = 1; i < n; i++){
+            prefixAns[i] = prefixAns[i-1] + arr[i];
+        }
+        return prefixAns;
+
+        // Without creating any new array
+        // for(int i = 1; i < n; i++){
+        //     arr[i] += arr[i-1];
+        // }
+        // return arr;
+    }
+    //> Q 11 Prefix sun for range l to r with one based indexing 
+    static int[] prefixSumOneBased(int arr[]){
+        int n = arr.length;
+        int[] prefixAns = new int[n + 1];
+        prefixAns[0] = 0;
+
+        for(int i = 1; i <= n; i++){
+            prefixAns[i] = prefixAns[i-1] + arr[i-1];
+        }
+        return prefixAns;
+    }
+
+
+    //> Q 12 Check if we can partition the array into two subarrays with equal sum. More
+          //>formally, check that the prefix sum of a part of the array is equal to the suffix
+          //>sum of rest of the array.
+
+    static boolean staticSumPartition(int arr[]){
+        int totalSum = totalSum(arr);
+        int prefix = 0;
+
+        for(int i = 0; i < arr.length; i++){
+            prefix += arr[1];
+            int suffixSum = totalSum - prefix;
+
+            if(suffixSum == prefix){
+                return true;
+            }
+        }
+        return false;
+    } 
+
     public static void main(String[] args) {
         //> Q1 
         // int arr_Q1[] = {4,6,3,5,8,2};
@@ -191,21 +248,47 @@ public class ArrayQuestions {
 
         //> Q9
 
-        int arr_Q9[] = {10, 51, 2, 78, 66, 3, 4};
-        int[] freq = freqArr(arr_Q9);
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter number to querys: ");
-        int q = sc.nextInt();
+        // int arr_Q9[] = {10, 51, 2, 78, 66, 3, 4};
+        // int[] freq = freqArr(arr_Q9);
+        // System.out.print("Enter number to querys: ");
+        // int q = sc.nextInt();
 
-        while(q > 0){
-            System.out.print("Enter number to searched: ");
-            int x = sc.nextInt();
-            if(freq[x] > 0){
-                System.out.println("Yes");
-            }else{
-                System.out.println("No");
-            }
-            q--;
-        }
+        // while(q > 0){
+        //     System.out.print("Enter number to searched: ");
+        //     int x = sc.nextInt();
+        //     if(freq[x] > 0){
+        //         System.out.println("Yes");
+        //     }else{
+        //         System.out.println("No");
+        //     }
+        //     q--;
+        // }
+
+        //> Q 10
+        // int arr_Q10[] = {1, 3, 4, 6, 7};
+        // int[] prefix = prefixSum(arr_Q10);
+        // printArr(prefix);
+
+        //> Q 11 
+
+        // int arr_Q11[] = {1,2,3,4,5,6};
+        // int[] prefix = prefixSumOneBased(arr_Q11);
+        // System.out.print("Enter number to querys: ");
+        // int q = sc.nextInt();
+
+        // while(q-- > 0){
+        //     System.out.println("Enter the range");
+        //     int l = sc.nextInt();
+        //     int r = sc.nextInt();
+
+        //     int ans = prefix[r] - prefix[l-1];
+
+        //     System.out.println("Ans: " + ans);
+        // }
+
+        //> Q 12
+        int[] arr_Q12 = {1, 2, 3, 6};
+        System.out.println("Equal partition possible: " + staticSumPartition(arr_Q12));
+
     }
 }

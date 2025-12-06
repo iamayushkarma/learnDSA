@@ -1,4 +1,4 @@
-package Fundamentals;
+package Array;
 import java.util.*;
 
 public class Array {
