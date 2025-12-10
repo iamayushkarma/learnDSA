@@ -1,22 +1,22 @@
 package Recursion;
 
 public class RecursionBasics {
-    static void printNumbers(int a){
-        if(a == 1){
+    static void printNumbers(int a) {
+        if (a == 1) {
             System.out.println(a);
             return;
         }
-        printNumbers(a-1);
+        printNumbers(a - 1);
         System.out.println(a);
     }
-    
-    static void printDecresing(int b){
-        if(b == 1){
+
+    static void printDecresing(int b) {
+        if (b == 1) {
             System.out.println(b);
             return;
         }
         System.out.println(b);
-        printDecresing(b-1);
+        printDecresing(b - 1);
     }
 
     public static void main(String[] args) {
