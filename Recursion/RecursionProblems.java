@@ -57,6 +57,69 @@ public class RecursionProblems {
         return seriesSum(h - 1) + h;
     }
 
+    // > Q7 Calculate GCD for two give numbers
+    static int calGCD(int i, int j) {
+        // while (i % j != 0) {
+        // int remender = i % j;
+        // i = j;
+        // j = remender;
+        // }
+
+        // > Elucid's algorithm ( gcd (x, y) = gcd (y, x % y))
+        if (j == 0)
+            return i;
+        return calGCD(j, i % j);
+    }
+
+    // > Q8 Print all value of an array recursively
+    static void printRecursive(int[] k, int idx) {
+        if (k.length == idx)
+            return;
+
+        System.out.print(k[idx] + " ");
+        printRecursive(k, idx + 1);
+    }
+
+    // > Q9 Find maximum number in an array
+    static int findMax(int[] l, int idx) {
+        if (idx == l.length - 1)
+            return l[idx];
+
+        return Math.max(l[idx], findMax(l, idx + 1));
+
+    }
+
+    // > Q10 Find sum of all elements in array
+    static int findSum(int[] m, int idx) {
+        if (idx == m.length)
+            return 0;
+
+        return m[idx] + findSum(m, idx + 1);
+    }
+
+    // > Q11 Given an array of n integers and a target value x. Print whether x
+    // > exists in the array or not.
+    static int findValue(int[] n, int value, int idx) {
+        if (idx == n.length)
+            return -1;
+
+        if (n[idx] == value)
+            return idx;
+        return findValue(n, value, idx + 1);
+    }
+
+    // > Q 12 Given an array arr of size N and an integer X. The task is to find all
+    // > the indices of the integer X in the array.
+
+    static void findAllIndices(int[] o, int value, int idx) {
+        if (idx == o.length)
+            return;
+        if (o[idx] == value) {
+            System.out.print(idx + " ");
+        }
+        findAllIndices(o, value, idx + 1);
+    }
+
     public static void main(String[] args) {
         // > Q1
         int a = 5;
@@ -90,5 +153,34 @@ public class RecursionProblems {
         int h = 5;
         System.out.println("Series sum of " + h + " is: " + seriesSum(h));
 
+        // > Q7
+        int i = 21;
+        int j = 14;
+        int gcd = calGCD(i, j);
+        int lcm = (i * j) / gcd;
+        System.out.println("GCD for " + i + " and " + j + " is: " + gcd + ", and their LCM"
+                + " is: " + lcm);
+
+        // > Q8
+        int arr1[] = { 1, 3, 5, 6, 8 };
+        printRecursive(arr1, 0);
+
+        // > Q9
+        int arr2[] = { 1, 3, 5, 6, 8 };
+        System.out.println("Maximum number in array is " + findMax(arr2, 0));
+
+        // > Q10
+        int arr3[] = { 1, 3, 5, 6, 8, 55, 100 };
+        System.out.println("Sum of the array is " + findSum(arr3, 0));
+
+        // > Q11
+        int arr4[] = { 1, 3, 5, 6, 8, 55, 100 };
+        System.out.println("at index: " + findValue(arr4, 1010, 0));
+
+        // > Q12
+        int arr5[] = { 1, 3, 5, 6, 8, 55, 100, 8, 8 };
+        int value = 8;
+        System.out.print(value + " found at index ");
+        findAllIndices(arr5, value, 0);
     } // end of main function
 }
