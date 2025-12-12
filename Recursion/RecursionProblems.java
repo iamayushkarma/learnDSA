@@ -118,6 +118,50 @@ public class RecursionProblems {
             System.out.print(idx + " ");
         }
         findAllIndices(o, value, idx + 1);
+
+    }
+
+    // > Q 13 Frog jump
+    // There are N stones, numbered from 0, 1, 2...,n-i. For each i (O<=i<N), the
+    // height of Stone i is hi. There is a frog who is initially on Stone 0. He will
+    // repeat the following action some number of times to reach Stone N-1 :
+    // If the frog is currently on Stone i, jump to Stone i+l or Stone i+2.
+    // Here, a cost of |hi - hj| I is incurred, where j is the stone to land on.
+
+    // Find the minimum possible total cost incurred before the frog reaches Stone N
+    // Input n = 4
+    // arr[] = 10 30 40 20
+    // Output= 30
+
+    static int frogJump(int[] arr, int n, int idx) {
+        if (idx == n - 1)
+            return 0;
+
+        int opt1 = Math.abs(arr[idx] - arr[idx + 1]) + frogJump(arr, n, idx + 1);
+        if (idx == n - 2)
+            return opt1;
+        int opt2 = Math.abs(arr[idx] - arr[idx + 2]) + frogJump(arr, n, idx + 2);
+
+        return Math.min(opt1, opt2);
+    }
+
+    // > Q14
+    // Given a string containing digits from 2-9 inclusive, return all
+    // possible letter combinations that the number could represent.Return the
+    // answer in any order.
+
+    static void keypadCombinations(String digits, String[] kp, String result) { // "23"
+
+        if (digits.length() == 0) {
+            System.out.print(result + " ");
+            return;
+        }
+        int currentNumber = digits.charAt(0) - '0'; // 2
+        String currentChar = kp[currentNumber]; // "abc"
+
+        for (int i = 0; i < currentChar.length(); i++) {
+            keypadCombinations(digits.substring(1), kp, result + currentChar.charAt(i));
+        }
     }
 
     public static void main(String[] args) {
@@ -182,5 +226,19 @@ public class RecursionProblems {
         int value = 8;
         System.out.print(value + " found at index ");
         findAllIndices(arr5, value, 0);
+        System.out.println();
+
+        // > Q13
+        int[] arr = { 10, 30, 40, 20 };
+        int n = arr.length;
+        System.out.println(
+                "Minimum possible total cost incurred before the frog reaches Stone N is: " + frogJump(arr, n, 0));
+
+        // > Q14
+        String str = "23";
+        String[] keypad = { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+        System.out.print("Keypad combinations for " + str + " is: ");
+        keypadCombinations(str, keypad, "");
+
     } // end of main function
 }
