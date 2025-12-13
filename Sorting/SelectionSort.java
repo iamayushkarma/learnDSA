@@ -1,32 +1,35 @@
 package Sorting;
 
-public class SelectionSort {
+import java.util.Arrays;
 
-    //- Time complexity = O(n^2)
-    public static void printArray(int arr[]) {
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
+public class SelectionSort {
+    static int[] swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+
+        return arr;
+    }
+
+    static void SelectionSort(int[] arr) {
+        int n = arr.length;
+
+        for (int i = 0; i < n - 1; i++) {
+
+            int minumNum = i;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[minumNum] > arr[j]) {
+                    minumNum = j;
+                }
+            }
+            swap(arr, minumNum, i);
         }
+        System.out.println(Arrays.toString(arr));
     }
 
     public static void main(String[] args) {
-        int arr[] = { 7, 8, 3, 1, 2 };
-        int count = 0;
 
-        for (int i = 0; i < arr.length - 1; i++) {
-            int smallest = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[smallest] > arr[j]) {
-                    smallest = j;
-                }
-            }
-            int temp = arr[smallest];
-            arr[smallest] = arr[i];
-            arr[i] = temp;
-            count++;
-        }
-        printArray(arr);
-        System.out.println();
-        System.out.println("Total swaps taken: " + count);
+        int[] arr = { 1, 4, 2, 3, 7, 9, 8 };
+        SelectionSort(arr);
     }
 }
