@@ -11,7 +11,7 @@ public class SelectionSort {
         return arr;
     }
 
-    static void SelectionSort(int[] arr) {
+    static void selectionSort(int[] arr) {
         int n = arr.length;
 
         for (int i = 0; i < n - 1; i++) {
@@ -30,6 +30,6 @@ public class SelectionSort {
     public static void main(String[] args) {
 
         int[] arr = { 1, 4, 2, 3, 7, 9, 8 };
-        SelectionSort(arr);
+        selectionSort(arr);
     }
 }
