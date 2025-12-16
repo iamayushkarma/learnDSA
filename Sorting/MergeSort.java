@@ -39,7 +39,6 @@ public class MergeSort {
         while (j < n2) {
             arr[k++] = right[j++];
         }
-
     }
 
     static void mergeSort(int[] arr, int l, int r) {
@@ -59,8 +58,8 @@ public class MergeSort {
         System.out.print("Original array: ");
         System.out.println(Arrays.toString(arr));
         System.out.print("Sorted array: ");
-        int n = arr.length - 1;
-        mergeSort(arr, 0, n);
+        int n = arr.length;
+        mergeSort(arr, 0, n - 1);
         System.out.println(Arrays.toString(arr));
     }
 }
