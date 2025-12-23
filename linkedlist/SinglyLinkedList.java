@@ -12,7 +12,69 @@ public class SinglyLinkedList {
     }
 
     public static class linkedList {
+        static Node head = null;
+        static Node tail = null;
 
+        static void insertAtEnd(int value) {
+            Node temp = new Node(value);
+
+            if (head == null || tail == null) {
+                head = temp;
+            } else {
+                tail.next = temp;
+            }
+            tail = temp;
+        }
+
+        static void insertAtStart(int value) {
+            Node temp = new Node(value);
+            if (head == null || tail == null) {
+                head = tail = temp;
+            } else {
+                temp.next = head;
+                head = temp;
+            }
+        }
+
+        static void insert(int value, int idx) {
+            Node t = new Node(value);
+            Node temp = head;
+
+            if (idx == 0) {
+                insertAtStart(value);
+                return;
+            }
+            if (idx == findLength()) {
+                insertAtEnd(value);
+                return;
+            }
+            if (idx > findLength() || idx < 0) {
+                System.out.println("Index is larger then linked list length");
+            }
+            for (int i = 1; i <= idx - 1; i++) {
+                temp = temp.next;
+            }
+            t.next = temp.next;
+            temp.next = t;
+        }
+
+        void displayNode() {
+            Node temp = head;
+            while (temp != null) {
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            }
+        }
+
+        static int findLength() {
+            int count = 0;
+            Node temp = head;
+            while (temp != null) {
+                count++;
+                temp = temp.next;
+            }
+            return count;
+        }
     }
 
     public static void printLinkedList(Node head) {
@@ -92,5 +154,19 @@ public class SinglyLinkedList {
 
         System.out.println();
         System.out.println("Length of Linked list is: " + findLength(a));
+
+        System.out.println();
+        linkedList newList = new linkedList();
+        newList.insertAtEnd(0);
+        newList.insertAtEnd(5);
+        newList.insertAtEnd(8);
+        newList.displayNode();
+        System.out.println();
+        // System.out.println("Length of linked list is: " + newList.findLength());
+        newList.insertAtStart(6);
+        newList.displayNode();
+        System.out.println();
+        newList.insert(9, 8);
+        newList.displayNode();
     }
 }
